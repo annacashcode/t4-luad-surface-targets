@@ -1,0 +1,63 @@
+{
+  "run_at": "2026-11-17T00:43:24.598939+00:00",
+  "mode": "real",
+  "features_file": "luad_genes.csv",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "n_labeled": 2000,
+  "n_test_surface": 20,
+  "features_used": [
+    "expr_mean_tumor",
+    "expr_log2fc_tn",
+    "expr_sd",
+    "expr_iqr",
+    "expr_detect_frac",
+    "gistic_amp_freq",
+    "gistic_mean_score"
+  ],
+  "leakage_patterns_enforced": [
+    "chronos",
+    "ceres",
+    "gene_?effect",
+    "\\beffect\\b",
+    "depmap",
+    "essential",
+    "dependency",
+    "codependen",
+    "crispr",
+    "rnai",
+    "achilles",
+    "sanger_score",
+    "bagel",
+    "\\blfc\\b"
+  ],
+  "tuning_budget_per_family": {
+    "ridge": 4,
+    "random_forest": 4,
+    "gradient_boosting": 4
+  },
+  "verdict": {
+    "primary_model": "gradient_boosting",
+    "declared_target_mae": 0.1936,
+    "achieved_test_mae": 0.2156,
+    "achieved_test_mae_sd": 0.0209,
+    "target_met": false,
+    "strongest_trained_comparator": "random_forest",
+    "comparator_test_mae": 0.2135,
+    "primary_matches_or_beats_comparator": false,
+    "metric_gap_vs_comparator": 0.002,
+    "constant_control_test_mae": 0.2274,
+    "improvement_over_control_pct": 5.2
+  },
+  "versions": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-11-17T00:44:53.973054+00:00",
+  "features_file": "luad_genes.csv",
+  "paper_counts": {
+    "surface_annotated": 1492,
+    "tumor_enriched": 90,
+    "amplified": 20,
+    "consistently_expressed": 19,
+    "abundantly_expressed": 6
+  },
+  "stated_thresholds": {
+    "fc_min": 1.0,
+    "detect_min": 0.5,
+    "amp_min": 0.1,
+    "sd_max": 1.5,
+    "expr_min": 5.0
+  },
+  "stated_threshold_provenance": {
+    "fc_min": "INFERRED",
+    "detect_min": "INFERRED",
+    "amp_min": "INFERRED",
+    "sd_max": "INFERRED",
+    "expr_min": "INFERRED"
+  },
+  "calibrated_thresholds": {
+    "detect_min": 0.5,
+    "fc_min": 1.5968433563911866,
+    "amp_min": 0.3546511627906977,
+    "sd_max": 3.0550185291278784,
+    "expr_min": 7.943399032882018
+  },
+  "traced_gene": "MPZL1",
+  "trace_stated": {
+    "gene": "MPZL1",
+    "survived": false,
+    "last_stage": "surface_annotated",
+    "dropped_at": "tumor_enriched"
+  },
+  "trace_calibrated": {
+    "gene": "MPZL1",
+    "survived": false,
+    "last_stage": "surface_annotated",
+    "dropped_at": "tumor_enriched"
+  },
+  "dependency_used_as_filter": false,
+  "versions": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5"
+  }
+}

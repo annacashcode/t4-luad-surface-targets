@@ -1,0 +1,11 @@
+mode,stage,ours,paper,difference,note
+stated,surface_annotated,1478,1492,-14,fixed by annotation
+stated,tumor_enriched,131,90,41,
+stated,amplified,116,20,96,
+stated,consistently_expressed,57,19,38,
+stated,abundantly_expressed,52,6,46,
+calibrated,surface_annotated,1478,1492,-14,fixed by annotation; not calibrated
+calibrated,tumor_enriched,90,90,0,"matched by construction, not by agreement"
+calibrated,amplified,20,20,0,"matched by construction, not by agreement"
+calibrated,consistently_expressed,19,19,0,"matched by construction, not by agreement"
+calibrated,abundantly_expressed,6,6,0,"matched by construction, not by agreement"

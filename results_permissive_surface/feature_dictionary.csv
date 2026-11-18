@@ -1,0 +1,10 @@
+column,source,type,definition,role
+expr_mean_tumor,LUAD Xena (TCGA),float,mean log2(TPM+1) across LUAD tumors,expression level
+expr_log2fc_tn,LUAD Xena + GTEx,float,"tumor minus normal mean, log2 scale",tumor enrichment; step 3 of the MPZL1 cascade
+expr_sd,LUAD Xena (TCGA),float,SD of log2(TPM+1) across tumors,expression variability
+expr_iqr,LUAD Xena (TCGA),float,interquartile range of log2(TPM+1),"variability, outlier-robust"
+expr_detect_frac,LUAD Xena (TCGA),float,fraction of tumors with TPM >= 1,detection breadth
+gistic_amp_freq,cBioPortal GISTIC 2.0,float,"fraction of LUAD samples with GISTIC score in {1,2}",amplification frequency; the paper's step 1
+gistic_mean_score,cBioPortal GISTIC 2.0,float,"mean GISTIC score, -2..2",amplification magnitude
+is_surface,Human Protein Atlas,0/1,plasma-membrane localization,"surface eligibility; stratifies the splits, never a predictor"
+label,DepMap Chronos,float,minus median Chronos across >= 3 LUAD lines,TARGET. Higher = more essential. NOT target validity.

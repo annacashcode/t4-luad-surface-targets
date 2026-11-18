@@ -1,0 +1,13 @@
+{
+  "primary_model": "random_forest",
+  "declared_target_mae": 0.2054,
+  "achieved_test_mae": 0.202,
+  "achieved_test_mae_sd": 0.0163,
+  "target_met": true,
+  "strongest_trained_comparator": "gradient_boosting",
+  "comparator_test_mae": 0.2077,
+  "primary_matches_or_beats_comparator": true,
+  "metric_gap_vs_comparator": -0.0057,
+  "constant_control_test_mae": 0.2304,
+  "improvement_over_control_pct": 12.3
+}

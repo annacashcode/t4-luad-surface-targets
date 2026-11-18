@@ -1,0 +1,8 @@
+data/*
+!data/checksums.txt
+!data/DOWNLOAD_LOG.md
+*.zip
+*.tar
+*.tar.gz
+__pycache__/
+.DS_Store

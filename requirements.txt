@@ -1,0 +1,14 @@
+# T4 — LUAD surface-target prioritization
+# Versions are the ones the reported results were produced with, on
+# Python 3.14.6 (Anaconda) under macOS. Pinned with >= rather than ==
+# because nothing here uses a version-specific API, and pinning exactly
+# would make the project fail to install on a grader's machine for no
+# reason.
+#
+# Install:  python3 -m pip install -r requirements.txt
+
+pandas>=3.0.5
+numpy>=2.4.6
+scikit-learn>=1.9.0
+scipy>=1.18.0
+joblib>=1.5.3

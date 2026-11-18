@@ -1,0 +1,21 @@
+{
+  "built_at": "2026-11-17T00:52:32.663850+00:00",
+  "inputs": {
+    "depmap_effect": "data/CRISPRGeneEffect.csv",
+    "depmap_model": "data/Model.csv",
+    "xena": "data/HiSeqV2",
+    "cna": "data/data_cna.txt",
+    "hpa": "data/subcellular_location.tsv"
+  },
+  "min_lines_per_gene": 3,
+  "join_key": "uppercased gene symbol",
+  "n_genes": 20530,
+  "n_labeled": 15707,
+  "n_surface": 1478,
+  "n_labeled_surface": 1422,
+  "versions": {
+    "python": "3.14.6",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  }
+}
