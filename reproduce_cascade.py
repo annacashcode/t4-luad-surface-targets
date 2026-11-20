@@ -182,6 +182,68 @@ def calibrate(df, hit=PAPER_HIT):
 
 
 # ---------------------------------------------------------------------------
+# Which column each stage tests, against which threshold, in which direction.
+# Used to explain WHY a traced gene passed or failed, instead of only where.
+CRITERIA = {
+    "tumor_enriched": [("expr_log2fc_tn", "fc_min", ">="),
+                       ("expr_detect_frac", "detect_min", ">=")],
+    "amplified": [("gistic_amp_freq", "amp_min", ">=")],
+    "consistently_expressed": [("expr_sd", "sd_max", "<=")],
+    "abundantly_expressed": [("expr_mean_tumor", "expr_min", ">=")],
+}
+
+
+def explain(df, gene, thresholds):
+    """Score one gene against every criterion, pass or fail.
+
+    The cascade stops at the first failure, so the stage where a gene drops
+    out tells you nothing about the other criteria it would have cleared.
+    For a gene the paper selected and this reproduction did not, that is the
+    whole question: did it miss narrowly on one axis, or is it a poor
+    candidate throughout?
+    """
+    row = df[df["gene"] == gene]
+    if row.empty:
+        print(f"\n    {gene} is not in the feature table at all.")
+        return None
+    row = row.iloc[0]
+
+    print(f"\n    {gene} AGAINST EVERY CRITERION (not just up to its drop-out)")
+    print(f"      surface annotated: "
+          f"{'yes' if row.get('is_surface') == 1 else 'NO'}")
+    print(f"      {'criterion':<20}{'value':>10}{'bar':>10}{'':>4}  margin")
+    out = []
+    for stage, tests in CRITERIA.items():
+        for col, key, op in tests:
+            if col not in row.index or key not in thresholds:
+                continue
+            v, bar = float(row[col]), float(thresholds[key])
+            if not np.isfinite(bar):
+                ok, margin = True, np.nan
+            else:
+                ok = v >= bar if op == ">=" else v <= bar
+                margin = (v - bar) if op == ">=" else (bar - v)
+            print(f"      {col:<20}{v:>10.3f}{bar:>10.3f}"
+                  f"{'  ok' if ok else ' FAIL':>4}  {margin:+.3f}")
+            out.append({"gene": gene, "stage": stage, "criterion": col,
+                        "value": v, "threshold": bar, "passed": bool(ok),
+                        "margin": float(margin)})
+
+    failed = [r for r in out if not r["passed"]]
+    if len(failed) == 0:
+        print(f"      {gene} clears every criterion.")
+    elif len(failed) == 1:
+        f = failed[0]
+        print(f"      {gene} clears every criterion but one: {f['criterion']}, "
+              f"short by {abs(f['margin']):.3f}.")
+        print(f"      A single-criterion miss points at how that one quantity")
+        print(f"      is computed, not at the gene's merit as a candidate.")
+    else:
+        print(f"      {gene} fails {len(failed)} criteria: "
+              f"{', '.join(f['criterion'] for f in failed)}.")
+    return out
+
+
 def trace(stages, gene):
     """Where in the cascade a named gene drops out, if it does."""
     last = None
@@ -263,6 +325,11 @@ def main():
     cal_t, cal_notes = calibrate(df)
     cal_stages = apply_cascade(df, cal_t)
     rows_b, trace_b = report("calibrated", cal_stages, cal_t, cal_notes, args.hit)
+
+    detail = explain(df, args.hit, cal_t)
+    if detail:
+        pd.DataFrame(detail).to_csv(args.outdir / "traced_gene_criteria.csv",
+                                    index=False)
 
     counts = pd.DataFrame(rows_a + rows_b)
     counts.to_csv(args.outdir / "cascade_counts.csv", index=False)

@@ -1,0 +1,6 @@
+gene,stage,criterion,value,threshold,passed,margin
+MPZL1,tumor_enriched,expr_log2fc_tn,0.6318691669671814,1.2541166934399903,False,-0.6222475264728089
+MPZL1,tumor_enriched,expr_detect_frac,1.0,0.5,True,0.5
+MPZL1,amplified,gistic_amp_freq,0.7034883720930233,0.313953488372093,True,0.38953488372093026
+MPZL1,consistently_expressed,expr_sd,0.4631602841057129,2.464671557114207,True,2.001511273008494
+MPZL1,abundantly_expressed,expr_mean_tumor,11.922523404255315,8.842481624758229,True,3.080041779497087

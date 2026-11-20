@@ -2,6 +2,15 @@
 
 Anna Cash · CPSC 6430, Fall 2026 · Checkpoint 2
 
+**Repository:** https://github.com/annacashcode/t4-luad-surface-targets
+**Submitted revision:** tag `checkpoint2` — https://github.com/annacashcode/t4-luad-surface-targets/releases/tag/checkpoint2
+
+The tag marks the exact revision submitted for Checkpoint 2; the code in the submitted ZIP
+matches it. A tag is used rather than a bare commit hash because this README and the report
+both have to name the revision they are part of, which a hash cannot do without pointing at
+an earlier commit than itself.
+
+
 This project does two separate things and keeps them separate on purpose.
 
 1. **A trained predictor.** Given a gene's expression and copy-number features
