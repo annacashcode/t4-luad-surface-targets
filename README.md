@@ -69,8 +69,8 @@ python3 -m pip install -r requirements.txt
 
 The four source files total about 590 MB and are **not** in this repository.
 All four are public and free; none require an account except cBioPortal, which
-needs none for this dataset. `DOWNLOAD_WALKTHROUGH.md` has click-by-click
-instructions.
+needs none for this dataset. `data/DOWNLOAD_LOG.md` records where each file
+came from and when.
 
 | file | source | size | what it provides |
 |---|---|---|---|
@@ -91,7 +91,6 @@ downloaded; verify with `shasum -c data/checksums.txt`.
 .
 ├── README.md
 ├── requirements.txt
-├── DOWNLOAD_WALKTHROUGH.md      how to obtain the five source files
 ├── build_feature_table.py       five raw files  ->  luad_genes.csv
 ├── t4_dependency.py             the trained predictor
 ├── reproduce_cascade.py         the paper reproduction
