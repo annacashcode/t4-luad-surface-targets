@@ -6,3 +6,4 @@ data/*
 *.tar.gz
 __pycache__/
 .DS_Store
+CP1_submission/
